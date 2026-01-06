@@ -9,7 +9,7 @@ describe("Login Page E2E Tests", () => {
   });
 
   it("should test failed case of the login form", () => {
-    cy.fixture("error-userName").then((errorData) => {
+    cy.fixture("error-username").then((errorData) => {
       cy.get("mat-card form").should("be.visible");
       cy.get('input[formcontrolname="username"]').type(errorData.username);
       cy.get('input[formcontrolname="password"]').type(errorData.password);
