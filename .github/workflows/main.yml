@@ -1,4 +1,4 @@
-name: Cypress Tests with Dependency and Artifact Caching
+name: Cypress Tests in Angular with Dependency and Artifact Caching
 
 on: push
 
