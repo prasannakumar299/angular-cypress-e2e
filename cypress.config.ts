@@ -3,7 +3,7 @@ import { defineConfig } from "cypress";
 import * as utils from "./src/cypress-util/cypress-util";
 
 export default defineConfig({
-  projectId: "1ddrdx", // Your project id from cypress dashboard
+  projectId: "3rictd", // Your project id from cypress dashboard
   retries: 0,
   viewportHeight: 800,
   viewportWidth: 1200,
@@ -11,7 +11,7 @@ export default defineConfig({
   env: {
     prodUrl: "https://prod-url.com",
     uatUrl: "https://uat-url.com",
-    userName: "Deepak@Jha.com"
+    userName: "prasanna@kumar.com"
   },
   e2e: {
     setupNodeEvents(on, config) {

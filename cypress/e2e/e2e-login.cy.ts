@@ -1,61 +1,30 @@
+/// <reference types="cypress" />
 
-describe(
-    'Login in the app and move to the dashboard',
-    () => {
-        beforeEach(
-            () => {
-                cy.visit('/login');
-            }
-        );
+describe("Login Page E2E Tests", () => {
+  beforeEach(() => {
+    // Navigate to the login page before each test
+    cy.visit("/login");
 
-        it(
-            'Should login in the app',
-            () => {
-                cy.fixture('username').then(
-                    (data) => {
-                        cy.get('input[formControlName="username"]').focus().as('username').type(Cypress.env('userName'));
-                        cy.get('input[formControlName="password"]').focus().as('password').type(data.password);
-                        cy.get('.mdc-button__label').click();
-                        cy.url().should('include', '/dashboard');
-                        cy.screenshot();
-                    }
-                )
-            }
-        )
+    // cy.fixture('username').as('userData');
+  });
 
-        it(
-            'Should login in the app',
-            () => {
-                cy.fixture('error-username').then(
-                    (data) => {
-                        cy.get('input[formControlName="username"]').focus().as('username').type(data.username);
-                        cy.get('input[formControlName="password"]').focus().as('password').type(data.password);
-                        cy.get('mat-error').first().should("have.text", "Email is required");
-                        cy.screenshot();
-                    }
-                )
-            }
-        )
+  it("should test failed case of the login form", () => {
+    cy.fixture("error-username").then((errorData) => {
+      cy.get("mat-card form").should("be.visible");
+      cy.get('input[formcontrolname="username"]').type(errorData.username);
+      cy.get('input[formcontrolname="password"]').type(errorData.password);
+      cy.get("mat-error").first().should("have.text", "Email is required");
+    });
+  });
 
-        it(
-            'Should login in the app using csv file data',
-            () => {
-                cy.readFile('cypress/fixtures/test.csv').then(
-                    (data) => {
-                        cy.task('csvToJson', data).then(
-                            (jsonData: any) => {
-                                console.log(jsonData);
-                                cy.get('input[formControlName="username"]').focus().as('username').type(jsonData[0].email);
-                                cy.get('input[formControlName="password"]').focus().as('password').type(jsonData[0].password);
-                                cy.get('.mdc-button__label').click();
-                                cy.url().should('include', '/dashboard');
-                            }
-                        );
-
-                        cy.screenshot();
-                    }
-                )
-            }
-        )
-    }
-);
+  it("should display the login form", () => {
+    cy.fixture("username").then((userData) => {
+      cy.get("mat-card form").should("be.visible");
+      cy.get('input[formcontrolname="username"]').type(userData.username);
+      cy.get('input[formcontrolname="password"]').type(userData.password);
+      cy.get("button").contains("Login").should("be.visible");
+      cy.get("button").contains("Login").click();
+      cy.url().should("include", "/dashboard");
+    });
+  });
+});

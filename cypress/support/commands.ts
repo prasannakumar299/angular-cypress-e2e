@@ -12,12 +12,12 @@
 //
 //
 // -- This is a parent command --
-Cypress.Commands.add('login', (email, password) => { 
-    cy.visit('/login');
-    cy.get('input[formControlName="username"]').type(email);
-    cy.get('input[formControlName="password"]').type(password);
-    cy.get('.mdc-button__label').click();
- })
+Cypress.Commands.add("login", (email, password) => {
+  cy.visit("/login");
+  cy.get('input[formControlName="username"]').type(email);
+  cy.get('input[formControlName="password"]').type(password);
+  cy.get("button").contains("Login").click();
+});
 //
 //
 // -- This is a child command --

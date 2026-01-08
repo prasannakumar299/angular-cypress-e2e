@@ -9,7 +9,7 @@ describe(
         );
 
         it(
-            'Dshboard should be visible in the app',
+            'Dashboard should be visible in the app',
             () => {
                 cy.login(Cypress.env('userName'), 'password');
                 cy.get('tbody.mdc-data-table__content').should('be.visible');
@@ -36,4 +36,4 @@ describe(
         );
 
     }
-);
+); 
