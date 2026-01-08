@@ -11,7 +11,7 @@ export default defineConfig({
   env: {
     prodUrl: "https://prod-url.com",
     uatUrl: "https://uat-url.com",
-    userName: "Deepak@Jha.com"
+    userName: "prasanna@kumar.com"
   },
   e2e: {
     setupNodeEvents(on, config) {

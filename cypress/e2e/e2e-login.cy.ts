@@ -3,7 +3,7 @@
 describe("Login Page E2E Tests", () => {
   beforeEach(() => {
     // Navigate to the login page before each test
-    cy.visit("http://localhost:4200/login");
+    cy.visit("/login");
 
     // cy.fixture('username').as('userData');
   });
