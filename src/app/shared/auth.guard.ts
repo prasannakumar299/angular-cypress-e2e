@@ -6,8 +6,9 @@ import { AuthService } from "./auth.service";
 export const AuthGuard: CanMatchFn = (route, segments) => {
     const router = inject( Router );
     const authService = inject( AuthService );
-
+console.log(authService.isLoggedIn,'authGuard');
     if (authService.isLoggedIn) {
+
       	return true;
     }
 
