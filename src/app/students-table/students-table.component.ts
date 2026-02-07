@@ -10,6 +10,7 @@ import { MatTableModule } from '@angular/material/table';
 import { StudentsRecords } from "../state/students-records.model";
 import { AppState, selectAllStudents, selectStudentById } from "../state/students-selectors";
 import * as Actions from "../state/students-records.action";
+import { AuthService } from '../shared/auth.service';
 
 @Component({
     selector: 'app-students-table',
@@ -23,7 +24,7 @@ export class StudentsTableComponent implements OnInit {
     studentsControl: FormControl = new FormControl();
     dataSource$: Observable<StudentsRecords[]> = this.store.select(selectAllStudents);
     displayColumns: string[] = ['name', 'city', 'country', 'subject', 'passportDeclaration', 'fitnessDeclaration', 'courseName', 'date', 'state', 'street', 'email', 'phone', 'postalCode'];
-    constructor(private store: Store<AppState>) {
+    constructor(private store: Store<AppState>,private authService:AuthService) {
         this.store.dispatch(Actions.callStudentsRecordsApi());
     }
 
@@ -55,5 +56,14 @@ export class StudentsTableComponent implements OnInit {
                 }
             }
         );
+    }
+
+    getStudentsData(): void {
+        this.authService.getStudentsData().subscribe(
+            (resp:any) => {
+                console.log(resp,'students data from service');
+            }
+        );
+
     }
 }
