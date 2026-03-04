@@ -1,0 +1,10 @@
+ <div class="container">
+ <div class="main-container">
+       <button (click)="createChart('bar')">barChart</button> 
+       <button (click)="createChart('line')">lineChart</button>
+        <button (click)="createChart('pie')">pieChart</button>
+ </div>
+    <div class="chart-container">
+      <canvas #myChart></canvas>
+    </div>
+  </div>

@@ -1,0 +1,15 @@
+.main-container {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    
+}
+
+.chart-container {
+   display:flex;
+   justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 400px;
+    height: 400px;
+}
