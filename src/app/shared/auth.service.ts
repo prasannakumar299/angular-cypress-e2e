@@ -9,7 +9,7 @@ import { tap, delay } from "rxjs/operators";
   providedIn: "root",
 })
 export class AuthService {
-  isLoggedIn: any = 0;
+  isLoggedIn: any = true;
   reirectUrl: string | null = null;
   url: string = "http://localhost:3000";
 
